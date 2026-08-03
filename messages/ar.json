@@ -5,10 +5,12 @@
     "home": "الرئيسية",
     "products": "المنتجات",
     "collections": "المجموعات",
-    "giftIdeas": "أفكار الهدايا",
-    "contactUs": "تواصل معنا",
-    "cart": "حقيبة التسوق",
-    "searchPlaceholder": "البحث عن قطعة..."
+    "giftIdeas": "أفكار للهدايا",
+    "contactUs": "اتصل بنا",
+    "cart": "سلة التسوق",
+    "searchPlaceholder": "ابحث عن مجوهرات...",
+    "topBar": "توصيل دولي آمن",
+    "freeShippingLocal": "توصيل مجاني في المغرب"
   },
   "Hero": {
     "title": "أناقة <highlight>الذهب</highlight> وفخامة <highlight>الفضة</highlight>",

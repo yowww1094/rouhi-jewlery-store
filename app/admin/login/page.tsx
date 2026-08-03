@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { authClient } from '@/lib/auth-client';
 import { useRouter } from 'next/navigation';
 import { Lock, Loader2 } from 'lucide-react';
+import Image from 'next/image';
 
 export default function AdminLogin() {
   const router = useRouter();
@@ -47,9 +48,16 @@ export default function AdminLogin() {
             <Lock className="w-5 h-5 text-white" />
           </div>
         </div>
-        <h2 className="mt-6 text-center font-display text-3xl font-extrabold text-gray-900 tracking-tight uppercase">
-          ROUHI Admin
-        </h2>
+        <div className="flex justify-center mt-6">
+          <Image 
+            src="/images/logo.png" 
+            alt="ROUHI Admin" 
+            width={300} 
+            height={120} 
+            className="h-20 w-auto object-contain"
+            priority
+          />
+        </div>
         <p className="mt-2 text-center text-sm text-gray-600">
           Sign in to access the dashboard
         </p>

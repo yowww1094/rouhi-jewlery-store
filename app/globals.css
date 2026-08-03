@@ -27,7 +27,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, .font-title, .font-display, .font-serif {
+.font-display, .font-serif {
   font-family: 'Noto Serif JP', Georgia, serif;
 }
 

@@ -2,8 +2,9 @@
 
 import { useTranslations } from 'next-intl';
 import { Link, usePathname } from '@/i18n/routing';
+import Image from 'next/image';
 import LanguageSwitcher from '@/components/shared/LanguageSwitcher';
-import { Search, ShoppingBag, Menu, X } from 'lucide-react';
+import { Search, ShoppingBag, Menu, X, Truck } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useCartStore } from '@/lib/store/cart';
 import CartDrawer from './CartDrawer';
@@ -29,15 +30,31 @@ export default function Header() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-white text-black border-b border-zinc-200 shadow-sm transition-colors">
+    <>
+      {/* Announcement Bar - Non Sticky */}
+      <div className="bg-black text-white text-[9px] sm:text-[11px] text-center py-2 px-2 sm:px-4 uppercase tracking-[0.1em] sm:tracking-[0.2em] font-light w-full flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-4">
+        <span>{t('topBar')}</span>
+        <span className="hidden sm:inline opacity-50">|</span>
+        <span className="flex items-center gap-1.5 sm:gap-2">
+          <Truck className="w-3 h-3 sm:w-4 sm:h-4 animate-pulse text-[#C5A059]" />
+          {t('freeShippingLocal')}
+        </span>
+      </div>
+      
+      <header className="sticky top-0 z-50 bg-white text-black border-b border-zinc-200 shadow-sm transition-colors">
       {/* Top Section: Brand & Right Action Icons */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         {/* Brand Logo */}
         <div className="flex items-center gap-4">
-          <Link href="/" className="inline-block">
-            <span className="font-display text-3xl sm:text-5xl font-extrabold tracking-[0.15em] text-black uppercase">
-              {t('storeName')}
-            </span>
+          <Link href="/" className="inline-block relative">
+            <Image 
+              src="/images/logo.png" 
+              alt={t('storeName')} 
+              width={200} 
+              height={90} 
+              className="h-11 sm:h-18 w-auto object-contain scale-[1.3] sm:scale-[1.4] origin-left"
+              priority
+            />
           </Link>
         </div>
 
@@ -127,5 +144,6 @@ export default function Header() {
       {/* Cart Drawer Overlay */}
       <CartDrawer isOpen={cartDrawerOpen} onClose={() => setCartDrawerOpen(false)} />
     </header>
+    </>
   );
 }

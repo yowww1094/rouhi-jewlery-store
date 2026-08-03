@@ -8,7 +8,8 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { createOrder } from '@/actions/order';
-import { ArrowLeft, ArrowRight, Lock, Loader2 } from 'lucide-react';
+import { Loader2, ArrowLeft, Lock, Plus, Minus, Trash2, ArrowRight } from 'lucide-react';
+import Image from 'next/image';
 import Header from '@/components/storefront/Header';
 
 // Zod Schema for Client Validation
@@ -100,8 +101,15 @@ export default function CheckoutPage() {
         >
           <ArrowLeft className={`w-5 h-5 ${locale === 'ar' ? 'rotate-180' : ''}`} />
         </Link>
-        <Link href="/" className="font-display text-3xl font-extrabold tracking-[0.15em] text-black uppercase">
-          ROUHI
+        <Link href="/" className="inline-block relative">
+          <Image 
+            src="/images/logo.png" 
+            alt="ROUHI" 
+            width={200} 
+            height={80} 
+            className="h-14 sm:h-16 w-auto object-contain"
+            priority
+          />
         </Link>
         <div className="absolute right-6 flex items-center gap-1.5 text-zinc-400 text-xs font-medium uppercase tracking-widest">
           <Lock className="w-3.5 h-3.5" />

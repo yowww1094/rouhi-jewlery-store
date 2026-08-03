@@ -2,6 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
+import Image from 'next/image';
 import { Phone, Mail, MapPin, Share2 } from 'lucide-react';
 
 export default function Footer({ 
@@ -26,9 +27,13 @@ export default function Footer({
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
           {/* Brand Col */}
           <div className="lg:col-span-2 space-y-4">
-            <span className="font-serif text-4xl font-bold tracking-[0.15em] text-black block">
-              {h('storeName')}
-            </span>
+            <Image 
+              src="/images/logo.png" 
+              alt={h('storeName')} 
+              width={300} 
+              height={120} 
+              className="h-20 sm:h-24 w-auto object-contain block"
+            />
             <p className="text-zinc-600 text-xs leading-relaxed max-w-sm font-light">
               {t('description')}
             </p>
@@ -149,7 +154,7 @@ export default function Footer({
 
         <div className="pt-8 border-t border-zinc-200 flex flex-col sm:flex-row items-center justify-between text-[11px] text-zinc-500 font-light">
           <p>© 2026 Maison Rouhi Joaillerie. {t('rights')}</p>
-          <p className="mt-2 sm:mt-0">Fait avec passion pour le Maroc</p>
+          <p className="mt-2 sm:mt-0">Fait avec passion pour ROUHI</p>
         </div>
       </div>
     </footer>

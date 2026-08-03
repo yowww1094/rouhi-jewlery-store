@@ -2,6 +2,7 @@ import { auth } from '@/lib/auth';
 import { headers } from 'next/headers';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { LayoutDashboard, ShoppingBag, Package, LogOut, Settings, Tags } from 'lucide-react';
 import LogoutButton from './LogoutButton';
 
@@ -23,9 +24,14 @@ export default async function DashboardLayout({
       {/* Sidebar */}
       <aside className="w-64 bg-white border-r border-zinc-200 flex flex-col flex-shrink-0">
         <div className="h-16 flex items-center px-6 border-b border-zinc-200">
-          <span className="font-display text-xl font-extrabold tracking-[0.15em] text-black">
-            ROUHI ADMIN
-          </span>
+          <Image 
+            src="/images/logo.png" 
+            alt="ROUHI ADMIN" 
+            width={200} 
+            height={80} 
+            className="h-14 w-auto object-contain"
+            priority
+          />
         </div>
         
         <nav className="flex-1 px-4 py-6 space-y-1">
