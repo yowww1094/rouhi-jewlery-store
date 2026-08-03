@@ -15,9 +15,7 @@ export async function getContactInfo() {
     // 500ms timeout fallback to prevent hanging UI
     const timeoutPromise = new Promise((resolve) => setTimeout(() => resolve(null), 500));
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return await Promise.race([fetchPromise, timeoutPromise]) as any;
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (error) {
     return null;
   }

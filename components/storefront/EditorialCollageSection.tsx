@@ -31,7 +31,6 @@ export default function EditorialCollageSection() {
                 key={idx}
                 className="group relative aspect-[3/4] overflow-hidden bg-white border border-zinc-200 shadow-sm hover:shadow-xl transition-all duration-300 flex items-end justify-center p-4"
               >
-                // eslint-disable-next-line @next/next/no-img-element
                 <img
                   src={card.img}
                   alt="ROUHI Passion"

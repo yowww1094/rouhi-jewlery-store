@@ -30,7 +30,6 @@ export async function GET(request: Request) {
 
     if (result.updates && result.updates.length > 0) {
       // Bulk update orders in MongoDB
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const bulkOps = result.updates.map((update: any) => ({
         updateOne: {
           filter: { orderNumber: update.orderNumber },
@@ -50,7 +49,6 @@ export async function GET(request: Request) {
       success: true, 
       updatedCount: result.updates?.length || 0 
     });
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     console.error('Cron job sync failed:', error);
     return NextResponse.json({ success: false, error: error.message }, { status: 500 });

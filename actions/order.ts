@@ -3,7 +3,6 @@
 import { connectToDatabase } from '@/lib/db';
 import { Order } from '@/models/Order';
 import { z } from 'zod';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { appendOrderToSheet, syncAllOrdersToSheet } from '@/lib/sheets';
 import { revalidatePath } from 'next/cache';
 
@@ -73,7 +72,6 @@ export async function createOrder(data: z.infer<typeof CheckoutSchema>) {
     });
 
     return { success: true, orderId: newOrder._id.toString() };
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     console.error('Error creating order:', error);
     return { success: false, error: error.message || 'Failed to create order' };
@@ -88,7 +86,6 @@ export async function syncOrdersAction() {
     await syncAllOrdersToSheet(orders);
     
     return { success: true };
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     console.error('Manual sync failed:', error);
     return { success: false, error: error.message || 'Failed to sync orders' };
@@ -110,7 +107,6 @@ export async function pullOrdersAction() {
 
     if (result.updates && result.updates.length > 0) {
       // Bulk update orders
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const bulkOps = result.updates.map((update: any) => ({
         updateOne: {
           filter: { orderNumber: update.orderNumber },
@@ -123,7 +119,6 @@ export async function pullOrdersAction() {
     
     revalidatePath('/admin/orders');
     return { success: true, updatedCount: result.updates?.length || 0 };
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     console.error('Manual pull failed:', error);
     return { success: false, error: error.message || 'Failed to pull orders from Sheets' };
@@ -141,7 +136,6 @@ export async function updateOrderStatus(orderId: string, formData: FormData) {
     
     revalidatePath('/admin/orders');
     return { success: true };
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     console.error('Failed to update order status:', error);
     return { success: false, error: error.message };

@@ -4,19 +4,15 @@ import { useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { CatalogProduct } from '@/components/storefront/ProductsCatalog';
 import { Link, useRouter } from '@/i18n/routing';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Star, Heart, Plus, Minus, ChevronDown, ChevronUp, Gift, Zap } from 'lucide-react';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import FeaturedProductsSection from './FeaturedProductsSection';
 import { useCartStore } from '@/lib/store/cart';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function ProductDetailsView({ product, similarProducts = [] }: { product: CatalogProduct, similarProducts?: any[] }) {
   const locale = useLocale();
   const t = useTranslations('ProductDetails');
   const name = locale === 'ar' ? product.name_ar : product.name_fr;
   const description = locale === 'ar' ? product.description_ar : product.description_fr;
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const isRtl = locale === 'ar';
 
   const [openAccordion, setOpenAccordion] = useState<string | null>('detail');
@@ -85,7 +81,6 @@ export default function ProductDetailsView({ product, similarProducts = [] }: { 
 
               return (
                 <div key={index} className={`${colSpan} ${aspect} bg-[#F6F5F4] overflow-hidden`}>
-                  // eslint-disable-next-line @next/next/no-img-element
                   <img src={img} alt={`${name} view ${index + 1}`} className="w-full h-full object-cover mix-blend-multiply" />
                 </div>
               );
@@ -227,7 +222,6 @@ export default function ProductDetailsView({ product, similarProducts = [] }: { 
                   <div key={p._id} className="group cursor-pointer">
                     <div className="aspect-[4/5] bg-[#F6F5F4] overflow-hidden mb-4 relative">
                       {p.images?.[0] && (
-                        // eslint-disable-next-line @next/next/no-img-element
                         <img
                           src={p.images[0]}
                           alt={similarName}

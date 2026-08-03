@@ -19,7 +19,6 @@ export default function CartDrawer({
   const { items, removeItem, updateQuantity, getTotalPrice } = useCartStore();
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
   }, []);
 
@@ -97,7 +96,6 @@ export default function CartDrawer({
               <div key={item.id} className="flex gap-4 group">
                 {/* Image */}
                 <div className="w-20 h-24 bg-[#FAF8F5] shrink-0 p-2 overflow-hidden border border-zinc-100">
-                  // eslint-disable-next-line @next/next/no-img-element
                   <img
                     src={item.image}
                     alt={locale === 'ar' ? item.name_ar : item.name_fr}

@@ -51,7 +51,6 @@ export async function updateStoreSettings(data: z.infer<typeof SettingsSchema>) 
     revalidatePath('/admin/settings');
     
     return { success: true };
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     console.error('Error updating store settings:', error);
     return { success: false, error: error.message || 'Failed to update store settings' };

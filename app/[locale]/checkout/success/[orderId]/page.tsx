@@ -3,7 +3,6 @@ import { connectToDatabase } from '@/lib/db';
 import { Order } from '@/models/Order';
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/routing';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { CheckCircle2, Package, ArrowLeft } from 'lucide-react';
 import Header from '@/components/storefront/Header';
 
@@ -125,7 +124,6 @@ export default async function OrderSuccessPage({
                 {t('itemDetails')}
               </h2>
               <div className="space-y-4">
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 {order.items.map((item: any, idx: number) => (
                   <div key={idx} className="flex justify-between text-sm bg-white p-4 border border-zinc-100 shadow-sm rounded-sm">
                     <div className="flex-1 pr-4">

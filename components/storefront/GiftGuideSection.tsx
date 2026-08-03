@@ -31,7 +31,6 @@ export default function GiftGuideSection({ products = [] }: { products?: GiftPro
       {/* PART 1: Full-Screen Width Banner with Title & Subtitle in Bottom Left */}
       <div className="relative w-full min-h-[500px] lg:min-h-[560px] flex items-end p-8 sm:p-16 text-white bg-black mb-20">
         {/* Full Screen Cover Image */}
-        // eslint-disable-next-line @next/next/no-img-element
         <img
           src="/images/gift-guide-hero.webp"
           alt="Gift Guide Rouhi"
@@ -66,7 +65,6 @@ export default function GiftGuideSection({ products = [] }: { products?: GiftPro
                   {/* Card Image Container */}
                   <div className="relative aspect-square w-full bg-[#FAF8F5] mb-4 overflow-hidden flex items-center justify-center p-4">
                     <Link href={`/products/${product.slug}`} className="w-full h-full">
-                      // eslint-disable-next-line @next/next/no-img-element
                       <img
                         src={product.images[0] || '/images/silver-bracelet.webp'}
                         alt={name}

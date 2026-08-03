@@ -59,7 +59,6 @@ export async function createProduct(data: z.infer<typeof ProductSchema>) {
     revalidatePath('/products');
     
     return { success: true };
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     console.error('Error creating product:', error);
     return { success: false, error: error.message || 'Failed to create product' };
@@ -90,7 +89,6 @@ export async function updateProduct(id: string, data: z.infer<typeof ProductSche
     revalidatePath(`/products/${validatedData.slug}`);
     
     return { success: true };
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     console.error('Error updating product:', error);
     return { success: false, error: error.message || 'Failed to update product' };
@@ -107,7 +105,6 @@ export async function deleteProduct(id: string) {
     revalidatePath('/products');
     
     return { success: true };
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     console.error('Error deleting product:', error);
     return { success: false, error: error.message || 'Failed to delete product' };

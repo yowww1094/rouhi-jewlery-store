@@ -8,13 +8,11 @@ import { Category } from '@/models/Category';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { getContactInfo } from '@/lib/settings';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 async function getProducts(searchParams: any) {
   try {
     await connectToDatabase();
     
     // Build Mongoose Query based on searchParams
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const query: any = { isActive: true };
 
     const tab = searchParams.tab;
@@ -67,7 +65,6 @@ async function getProducts(searchParams: any) {
     }
 
     // Sort Logic
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let sortObj: any = { createdAt: -1 };
     const sort = searchParams.sort;
     if (sort === 'low-high') sortObj = { price: 1 };
@@ -83,7 +80,6 @@ async function getProducts(searchParams: any) {
     // Also get the total count for the "Load More" button to know when to hide
     const totalCount = await Product.countDocuments(query);
     
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const formattedProducts = products.map((p: any) => ({
       _id: p._id.toString(),
       name_fr: p.name_fr,
@@ -91,7 +87,6 @@ async function getProducts(searchParams: any) {
       description_fr: p.description_fr,
       description_ar: p.description_ar,
       material: p.material,
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       categories: p.categories?.map((c: any) => c.slug) || ['uncategorized'],
       targetAudience: p.targetAudience || 'Unisex',
       isCollection: p.isCollection || false,
@@ -103,7 +98,6 @@ async function getProducts(searchParams: any) {
       isFeatured: p.isFeatured
     }));
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const formattedCategories = categories.map((c: any) => ({
       _id: c._id.toString(),
       name_fr: c.name_fr,
@@ -124,11 +118,9 @@ export default async function ProductsPage({
   searchParams,
 }: {
   params: Promise<{ locale: string }>;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   searchParams: Promise<any>;
 }) {
   const { locale } = await params;
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { tab } = await searchParams;
   setRequestLocale(locale);
   const t = await getTranslations('Catalog');
@@ -160,7 +152,6 @@ export default async function ProductsPage({
             {/* 2 Silver Diamond Rings Image Column (Larger image display) */}
             <div className="lg:col-span-7 flex justify-center lg:justify-end">
               <div className="w-full max-w-[720px] h-[180px] sm:h-[220px] lg:h-[240px] relative overflow-hidden flex items-center justify-end">
-                // eslint-disable-next-line @next/next/no-img-element
                 <img
                   src="/images/shop/shop-header-cover.webp"
                   alt="ROUHI 2 Silver Diamond Rings Header"

@@ -1,11 +1,9 @@
 import { notFound } from 'next/navigation';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { getTranslations } from 'next-intl/server';
 import { connectToDatabase } from '@/lib/db';
 import { Product } from '@/models/Product';
 import ProductDetailsView from '@/components/storefront/ProductDetailsView';
 import { Metadata } from 'next';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { CatalogProduct } from '@/components/storefront/ProductsCatalog';
 import Header from '@/components/storefront/Header';
 import NewsletterSection from '@/components/storefront/NewsletterSection';
@@ -46,10 +44,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 }
 
 export default async function ProductPage({ params }: { params: Promise<{ locale: string; slug: string }> }) {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { locale, slug } = await params;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let product: any = null;
   let contactInfo = null;
 
@@ -60,7 +56,6 @@ export default async function ProductPage({ params }: { params: Promise<{ locale
       getContactInfo()
     ]);
     contactInfo = fetchedContactInfo;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let similarDbProducts: any[] = [];
     if (dbProduct) {
       const categoryConditions = [];
@@ -68,9 +63,7 @@ export default async function ProductPage({ params }: { params: Promise<{ locale
         categoryConditions.push({ categories: { $in: dbProduct.categories } });
       }
       // Support legacy 'category' string field
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       if ((dbProduct as any).category) {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         categoryConditions.push({ category: (dbProduct as any).category });
       }
 
@@ -99,7 +92,6 @@ export default async function ProductPage({ params }: { params: Promise<{ locale
         description_fr: dbProduct.description_fr,
         description_ar: dbProduct.description_ar,
         material: dbProduct.material,
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         categories: dbProduct.categories?.map((c: any) => c.toString()) || ['Uncategorized'],
         targetAudience: dbProduct.targetAudience || 'Unisex',
         isCollection: dbProduct.isCollection || false,

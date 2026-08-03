@@ -4,11 +4,9 @@ import { useState } from 'react';
 import { createCategory, updateCategory, deleteCategory } from '@/actions/category';
 import { Plus, Edit2, Trash2, Loader2, X } from 'lucide-react';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function CategoriesTableClient({ initialCategories }: { initialCategories: any[] }) {
   const [categories, setCategories] = useState(initialCategories);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [editingCategory, setEditingCategory] = useState<any>(null);
   
   const [formData, setFormData] = useState({ name_fr: '', name_ar: '' });
@@ -22,7 +20,6 @@ export default function CategoriesTableClient({ initialCategories }: { initialCa
     setIsModalOpen(true);
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleOpenEdit = (category: any) => {
     setEditingCategory(category);
     setFormData({ name_fr: category.name_fr, name_ar: category.name_ar });
@@ -35,7 +32,6 @@ export default function CategoriesTableClient({ initialCategories }: { initialCa
     
     const result = await deleteCategory(id);
     if (result.success) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       setCategories(categories.filter((c: any) => c._id !== id));
     } else {
       alert(result.error);
@@ -51,7 +47,6 @@ export default function CategoriesTableClient({ initialCategories }: { initialCa
       if (editingCategory) {
         const result = await updateCategory(editingCategory._id, formData);
         if (result.success) {
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           setCategories(categories.map((c: any) => 
             c._id === editingCategory._id 
               ? { ...c, ...formData } 
@@ -71,7 +66,6 @@ export default function CategoriesTableClient({ initialCategories }: { initialCa
           setErrorMsg(result.error || 'Failed to create');
         }
       }
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       setErrorMsg(err.message || 'An error occurred');
     } finally {

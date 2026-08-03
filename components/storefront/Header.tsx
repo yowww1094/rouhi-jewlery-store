@@ -17,7 +17,6 @@ export default function Header() {
   const cartCount = useCartStore((state) => state.getTotalItems());
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
   }, []);
 

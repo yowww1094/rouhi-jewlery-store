@@ -21,7 +21,6 @@ const SettingsSchema = z.object({
 
 type SettingsFormData = z.infer<typeof SettingsSchema>;
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function SettingsForm({ initialData }: { initialData: any }) {
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);

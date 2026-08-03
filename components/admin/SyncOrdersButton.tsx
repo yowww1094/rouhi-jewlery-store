@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import { syncOrdersAction, pullOrdersAction } from '@/actions/order';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { RefreshCw, DownloadCloud, UploadCloud } from 'lucide-react';
 
 export default function SyncOrdersButton() {

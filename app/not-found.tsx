@@ -17,7 +17,6 @@ export default function NotFound() {
         }}>
           <h1 style={{ fontSize: '3rem', margin: '0 0 1rem 0', fontWeight: 'bold' }}>404</h1>
           <p style={{ margin: '0 0 2rem 0', color: '#666' }}>Page not found / Page introuvable</p>
-          // eslint-disable-next-line @next/next/no-html-link-for-pages
           <a href="/" style={{ 
             backgroundColor: '#000', 
             color: '#fff', 
@@ -28,7 +27,6 @@ export default function NotFound() {
             letterSpacing: '0.1em',
             fontWeight: 'bold' 
           }}>
-            // eslint-disable-next-line react/no-unescaped-entities
             Go to Home / Retour à l'accueil
           </a>
         </div>

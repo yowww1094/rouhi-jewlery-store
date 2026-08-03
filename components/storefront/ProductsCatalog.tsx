@@ -1,6 +1,5 @@
 'use client';
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { useState, useMemo, useEffect } from 'react';
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
@@ -61,7 +60,6 @@ export default function ProductsCatalog({
 
   useEffect(() => {
     if (initialTab === 'collections' || initialTab === 'men' || initialTab === 'women' || initialTab === 'gifts') {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
       setSelectedTopFilter(initialTab);
     } else if (!initialTab) {
       setSelectedTopFilter('all');
@@ -103,7 +101,6 @@ export default function ProductsCatalog({
   };
 
   const setTopFilter = (val: string) => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     setSelectedTopFilter(val as any);
     updateUrlParams({ tab: val === 'all' ? null : val });
   };
@@ -356,7 +353,6 @@ export default function ProductsCatalog({
                   {/* Card Image Container */}
                   <div className="relative aspect-square w-full bg-[#FAF8F5] mb-4 overflow-hidden flex items-center justify-center p-4">
                     <Link href={`/products/${product.slug}`} className="w-full h-full">
-                      // eslint-disable-next-line @next/next/no-img-element
                       <img
                         src={product.images[0]}
                         alt={name}

@@ -6,7 +6,6 @@ export default async function NewProductPage() {
   await connectToDatabase();
   const categories = await Category.find().lean();
   
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const formattedCategories = categories.map((c: any) => ({
     _id: c._id.toString(),
     name_fr: c.name_fr

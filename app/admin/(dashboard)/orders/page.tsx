@@ -19,7 +19,6 @@ export default async function AdminOrdersPage({
   const search = (params.search as string) || '';
   const statusFilter = (params.status as string) || 'All';
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const query: any = {};
   if (statusFilter !== 'All') {
     query.status = statusFilter;
@@ -42,7 +41,6 @@ export default async function AdminOrdersPage({
     .limit(ITEMS_PER_PAGE)
     .lean();
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   async function updateOrderStatus(orderId: string, formData: FormData) {
     'use server';
     const status = formData.get('status') as string;

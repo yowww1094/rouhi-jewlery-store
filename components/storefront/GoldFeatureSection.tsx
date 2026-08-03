@@ -3,7 +3,6 @@
 import { useLocale, useTranslations } from 'next-intl';
 
 export default function GoldFeatureSection() {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const locale = useLocale();
   const t = useTranslations('Sections');
 
@@ -25,7 +24,6 @@ export default function GoldFeatureSection() {
           {/* Right Column: Tall Vertical Image (No Rounded Corners, No Decoration) */}
           <div className="lg:col-span-6 flex justify-center lg:justify-end">
             <div className="w-full max-w-[500px] aspect-[3/4] relative">
-              // eslint-disable-next-line @next/next/no-img-element
               <img
                 src="/images/gold-collection.webp"
                 alt="100% Gold Rouhi Collection"

@@ -15,7 +15,6 @@ export default function NotFound() {
             404 - Page introuvable
           </h1>
           <p className="text-zinc-600 max-w-md text-sm mx-auto leading-relaxed">
-            // eslint-disable-next-line react/no-unescaped-entities
             La page que vous recherchez n'existe pas ou a été déplacée. 
             <br />
             (The page you are looking for does not exist or has been moved.)
@@ -26,7 +25,6 @@ export default function NotFound() {
             href="/"
             className="px-10 py-4 bg-black text-white hover:bg-zinc-800 transition-colors text-xs font-bold uppercase tracking-widest shadow-sm inline-block"
           >
-            // eslint-disable-next-line react/no-unescaped-entities
             Retour à l'accueil (Back Home)
           </Link>
         </div>

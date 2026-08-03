@@ -4,7 +4,6 @@ import { useTranslations, useLocale } from 'next-intl';
 
 export default function OurStorySection() {
   const t = useTranslations('Sections');
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const locale = useLocale();
 
   return (
@@ -16,7 +15,6 @@ export default function OurStorySection() {
           {/* Left: Two Interlocking Golden Rings Image (Seamless Background Sync) */}
           <div className="lg:col-span-6 flex justify-center">
             <div className="relative aspect-square max-w-[420px] w-full group">
-              // eslint-disable-next-line @next/next/no-img-element
               <img
                 src="/images/our-story-gold-rings.webp"
                 alt="Rouhi Golden Rings - Our Story"
@@ -72,7 +70,6 @@ export default function OurStorySection() {
           {/* Right: Silver Ring Image (Seamless Background Sync) */}
           <div className="lg:col-span-6 flex justify-center">
             <div className="relative aspect-square max-w-[420px] w-full group">
-              // eslint-disable-next-line @next/next/no-img-element
               <img
                 src="/images/our-story-silver-ring.webp"
                 alt="Rouhi Silver Diamond Ring"

@@ -1,13 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { createProduct, updateProduct } from '@/actions/product';
 import { useRouter } from 'next/navigation';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Loader2, Plus, X, Upload } from 'lucide-react';
 import { CldUploadWidget } from 'next-cloudinary';
 
@@ -35,7 +33,6 @@ export default function ProductForm({
   initialData, 
   categories 
 }: { 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   initialData?: any;
   categories: { _id: string; name_fr: string }[];
 }) {
@@ -44,9 +41,7 @@ export default function ProductForm({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { register, handleSubmit, control, watch, setValue, formState: { errors } } = useForm<ProductFormData>({
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     resolver: zodResolver(ProductSchema) as any,
     defaultValues: initialData || {
       name_fr: '',
@@ -57,7 +52,6 @@ export default function ProductForm({
       material: 'Gold',
       slug: '',
       images: [],
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       categories: initialData?.categories?.map((c: any) => c._id?.toString() || c.toString()) || [],
       targetAudience: initialData?.targetAudience || 'Unisex',
       isActive: true,
@@ -67,7 +61,6 @@ export default function ProductForm({
     }
   });
 
-  // eslint-disable-next-line react-hooks/incompatible-library
   const images = watch('images');
 
   const onSubmit = async (data: ProductFormData) => {
@@ -94,7 +87,6 @@ export default function ProductForm({
   };
 
   return (
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     <form onSubmit={handleSubmit(onSubmit as any)} className="space-y-8 bg-white p-6 sm:p-8 rounded-xl border border-gray-200 shadow-sm max-w-4xl">
       {errorMsg && (
         <div className="p-4 bg-red-50 text-red-600 text-sm rounded-lg border border-red-100">
@@ -230,7 +222,6 @@ export default function ProductForm({
             <div className="flex flex-wrap gap-2 mb-2">
               {images.map((img, i) => (
                 <div key={i} className="relative w-20 h-20 bg-gray-100 rounded-lg overflow-hidden border border-gray-200">
-                  // eslint-disable-next-line @next/next/no-img-element
                   <img src={img} alt="Product" className="w-full h-full object-cover" />
                   <button type="button" onClick={() => setValue('images', images.filter((_, index) => index !== i))} className="absolute top-1 right-1 bg-white/80 p-1 rounded-full text-red-600 hover:bg-white">
                     <X className="w-3 h-3" />
@@ -240,7 +231,6 @@ export default function ProductForm({
             </div>
             <CldUploadWidget 
               uploadPreset={process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET || "rouhi_jewelry"} 
-              // eslint-disable-next-line @typescript-eslint/no-explicit-any
               onSuccess={(result: any) => {
                 setValue('images', [...images, result.info.secure_url]);
               }}

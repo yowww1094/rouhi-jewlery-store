@@ -1,6 +1,5 @@
 'use client';
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { Edit2, Trash2, Search, Filter, Eye, X } from 'lucide-react';
@@ -17,7 +16,6 @@ export default function ProductsTableClient({
   initialStatus,
   initialTag
 }: { 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   products: any[];
   currentPage: number;
   totalPages: number;
@@ -29,7 +27,6 @@ export default function ProductsTableClient({
   const [searchQuery, setSearchQuery] = useState(initialSearch);
   const [statusFilter, setStatusFilter] = useState(initialStatus);
   const [tagFilter, setTagFilter] = useState(initialTag);
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [selectedProductForPreview, setSelectedProductForPreview] = useState<any>(null);
   const ITEMS_PER_PAGE = 10;
   
@@ -126,14 +123,12 @@ export default function ProductsTableClient({
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
-              // eslint-disable-next-line @typescript-eslint/no-explicit-any
               {products.map((product: any) => (
                 <tr key={product._id.toString()}>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="flex items-center">
                       <div className="flex-shrink-0 h-10 w-10 bg-gray-100 rounded-md overflow-hidden">
                         {product.images?.[0] && (
-                          // eslint-disable-next-line @next/next/no-img-element
                           <img className="h-10 w-10 object-cover" src={product.images[0]} alt="" />
                         )}
                       </div>
@@ -145,7 +140,6 @@ export default function ProductsTableClient({
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                     {product.categories && product.categories.length > 0 
-                      // eslint-disable-next-line @typescript-eslint/no-explicit-any
                       ? product.categories.map((c: any) => c.name_fr).join(', ') 
                       : 'Uncategorized'}
                   </td>
@@ -254,7 +248,6 @@ export default function ProductsTableClient({
                 {/* Images */}
                 <div className="w-full md:w-5/12">
                   <div className="aspect-square bg-gray-50 rounded-lg overflow-hidden border border-gray-100 mb-3">
-                    // eslint-disable-next-line @next/next/no-img-element
                     <img 
                       src={selectedProductForPreview.images?.[0] || '/images/shop/placeholder.png'} 
                       alt={selectedProductForPreview.name_fr}
@@ -265,7 +258,6 @@ export default function ProductsTableClient({
                     <div className="flex gap-2 overflow-x-auto pb-2">
                       {selectedProductForPreview.images.slice(1).map((img: string, i: number) => (
                         <div key={i} className="w-16 h-16 shrink-0 bg-gray-50 rounded border border-gray-100 overflow-hidden">
-                          // eslint-disable-next-line @next/next/no-img-element
                           <img src={img} alt="" className="w-full h-full object-cover mix-blend-multiply" />
                         </div>
                       ))}
@@ -306,7 +298,6 @@ export default function ProductsTableClient({
                     <div className="col-span-2">
                       <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">Categories</h3>
                       <p className="text-sm text-gray-900">
-                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
                         {selectedProductForPreview.categories?.map((c: any) => c.name_fr).join(', ') || 'Uncategorized'}
                       </p>
                     </div>

@@ -2,9 +2,7 @@
 
 import { useTranslations, useLocale } from 'next-intl';
 import { Link } from '@/i18n/routing';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { ShoppingBag } from 'lucide-react';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { useState } from 'react';
 import { useCartStore } from '@/lib/store/cart';
 
@@ -66,7 +64,6 @@ export default function FeaturedProductsSection({ products = [] }: { products?: 
               <div className={`lg:col-span-6 flex justify-center ${!isEven ? 'lg:order-2' : 'lg:order-1'}`}>
                 <div className="relative aspect-square max-w-[440px] w-full group">
                   <Link href={`/products/${product.slug}`} className="w-full h-full block">
-                    // eslint-disable-next-line @next/next/no-img-element
                     <img
                       src={product.images[0] || '/images/silver-bracelet.webp'}
                       alt={name}

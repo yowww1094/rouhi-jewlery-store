@@ -22,11 +22,9 @@ export default function Error({
       </div>
       <div>
         <h1 className="font-display text-3xl sm:text-4xl font-bold text-black mb-4">
-          // eslint-disable-next-line react/no-unescaped-entities
           Oups! Une erreur s'est produite.
         </h1>
         <p className="text-zinc-600 max-w-md text-sm mx-auto">
-          // eslint-disable-next-line react/no-unescaped-entities
           Nous sommes désolés, mais une erreur inattendue s'est produite lors du chargement de cette page. Veuillez réessayer.
         </p>
       </div>

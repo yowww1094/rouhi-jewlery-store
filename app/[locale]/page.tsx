@@ -29,7 +29,6 @@ async function getFeaturedProducts() {
     const timeoutPromise = new Promise<unknown[]>((resolve) => setTimeout(() => resolve([]), 500));
 
     return await Promise.race([fetchPromise, timeoutPromise]);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (error) {
     return [];
   }
@@ -48,7 +47,6 @@ async function getGiftProducts() {
 
     const timeoutPromise = new Promise<unknown[]>((resolve) => setTimeout(() => resolve([]), 500));
     return await Promise.race([fetchPromise, timeoutPromise]);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (error) {
     return [];
   }

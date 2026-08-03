@@ -2,7 +2,6 @@ import { auth } from '@/lib/auth';
 import { headers } from 'next/headers';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { LayoutDashboard, ShoppingBag, Package, LogOut, Settings, Tags } from 'lucide-react';
 import LogoutButton from './LogoutButton';
 

@@ -1,6 +1,5 @@
 'use client';
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { useState, useMemo, useRef } from 'react';
 import { updateOrderStatus } from '@/actions/order';
 import { Eye, X } from 'lucide-react';
@@ -13,13 +12,11 @@ export default function OrdersTableClient({
   totalPages,
   totalOrders 
 }: { 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   orders: any[];
   currentPage: number;
   totalPages: number;
   totalOrders: number;
 }) {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [selectedOrderForPreview, setSelectedOrderForPreview] = useState<any>(null);
   const ITEMS_PER_PAGE = 10;
   
@@ -278,7 +275,6 @@ export default function OrdersTableClient({
                       </tr>
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200">
-                      // eslint-disable-next-line @typescript-eslint/no-explicit-any
                       {selectedOrderForPreview.items.map((item: any, i: number) => (
                         <tr key={i}>
                           <td className="px-4 py-3">

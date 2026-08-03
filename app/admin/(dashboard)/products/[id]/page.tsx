@@ -17,7 +17,6 @@ export default async function EditProductPage({ params }: { params: Promise<{ id
     notFound();
   }
   
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const formattedCategories = categories.map((c: any) => ({
     _id: c._id.toString(),
     name_fr: c.name_fr
@@ -26,7 +25,6 @@ export default async function EditProductPage({ params }: { params: Promise<{ id
   const formattedProduct = {
     ...product,
     _id: product._id.toString(),
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     categories: product.categories?.map((c: any) => c.toString()) || [],
   };
 

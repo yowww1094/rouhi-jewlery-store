@@ -11,7 +11,6 @@ export default function HeroBanner() {
     <section className="relative w-full min-h-[82vh] lg:min-h-[88vh] flex items-center overflow-hidden bg-[#0D0D0E] text-white">
       {/* Background Image in Full Cover Mode with Black Overlay */}
       <div className="absolute inset-0 z-0">
-        // eslint-disable-next-line @next/next/no-img-element
         <img
           src="/images/hero-banner.webp"
           alt="Rouhi Jewelry Cover Hero"

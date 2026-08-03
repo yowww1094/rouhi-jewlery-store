@@ -2,9 +2,7 @@ import { connectToDatabase } from '@/lib/db';
 import { Product } from '@/models/Product';
 import '@/models/Category';
 import Link from 'next/link';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Plus, Edit2, Trash2 } from 'lucide-react';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { deleteProduct } from '@/actions/product';
 import ProductsTableClient from '@/components/admin/ProductsTableClient';
 
@@ -24,7 +22,6 @@ export default async function AdminProductsPage({
   const tagFilter = params.tag as string || 'all';
 
   // Build the Mongoose query based on filters
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const query: any = {};
 
   if (search) {

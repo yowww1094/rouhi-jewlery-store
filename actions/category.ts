@@ -24,7 +24,6 @@ export async function createCategory(data: z.infer<typeof CategorySchema>) {
     const validated = CategorySchema.parse(data);
     await connectToDatabase();
     
-    // eslint-disable-next-line prefer-const
     let baseSlug = generateSlug(validated.name_fr);
     let slug = baseSlug;
     let counter = 1;
@@ -44,7 +43,6 @@ export async function createCategory(data: z.infer<typeof CategorySchema>) {
     await newCategory.save();
     revalidatePath('/admin/categories');
     return { success: true, categoryId: newCategory._id.toString() };
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     console.error('Error creating category:', error);
     return { success: false, error: error.message || 'Failed to create category' };
@@ -63,7 +61,6 @@ export async function updateCategory(id: string, data: z.infer<typeof CategorySc
 
     // Only update slug if name_fr changed
     if (category.name_fr !== validated.name_fr) {
-      // eslint-disable-next-line prefer-const
       let baseSlug = generateSlug(validated.name_fr);
       let slug = baseSlug;
       let counter = 1;
@@ -81,7 +78,6 @@ export async function updateCategory(id: string, data: z.infer<typeof CategorySc
     await category.save();
     revalidatePath('/admin/categories');
     return { success: true };
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     console.error('Error updating category:', error);
     return { success: false, error: error.message || 'Failed to update category' };
@@ -94,7 +90,6 @@ export async function deleteCategory(id: string) {
     await Category.findByIdAndDelete(id);
     revalidatePath('/admin/categories');
     return { success: true };
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     console.error('Error deleting category:', error);
     return { success: false, error: error.message || 'Failed to delete category' };

@@ -20,13 +20,11 @@ export async function getGoogleSheetsClient() {
   });
 
   const client = await auth.getClient();
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const sheets = google.sheets({ version: 'v4', auth: client as any });
   
   return sheets;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function appendOrderToSheet(orderData: any) {
   try {
     const spreadsheetId = process.env.GOOGLE_SHEET_ID;
@@ -39,7 +37,6 @@ export async function appendOrderToSheet(orderData: any) {
     
     // Format products list into a single string for the sheet cell
     const productsString = orderData.items.map(
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       (item: any) => `${item.quantity}x ${item.name_fr} (${item.material})`
     ).join(' | ');
 
@@ -74,7 +71,6 @@ export async function appendOrderToSheet(orderData: any) {
   }
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function syncAllOrdersToSheet(ordersData: any[]) {
   try {
     const spreadsheetId = process.env.GOOGLE_SHEET_ID;
@@ -90,7 +86,6 @@ export async function syncAllOrdersToSheet(ordersData: any[]) {
 
     const values = ordersData.map(orderData => {
       const productsString = orderData.items.map(
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (item: any) => `${item.quantity}x ${item.name_fr || 'Product'} (${item.material})`
       ).join(' | ');
 

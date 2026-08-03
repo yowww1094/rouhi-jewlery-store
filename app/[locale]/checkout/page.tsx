@@ -229,7 +229,6 @@ export default function CheckoutPage() {
                 {items.map((item) => (
                   <div key={item.id} className="flex gap-4">
                     <div className="w-16 h-20 bg-[#FAF8F5] p-1 border border-zinc-100 shrink-0">
-                      // eslint-disable-next-line @next/next/no-img-element
                       <img src={item.image} alt="product" className="w-full h-full object-contain mix-blend-multiply" />
                     </div>
                     <div className="flex-1 flex flex-col justify-between">

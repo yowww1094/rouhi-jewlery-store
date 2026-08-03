@@ -45,7 +45,6 @@ export default function RevenueChart({ data }: { data: ChartData[] }) {
           <Tooltip 
             cursor={{ fill: '#F3F4F6' }}
             contentStyle={{ borderRadius: '8px', border: '1px solid #E5E7EB', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             formatter={(value: any) => [`${Number(value).toFixed(2)} MAD`, 'Revenue']}
           />
           <Bar 

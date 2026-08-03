@@ -18,7 +18,6 @@ export default async function AdminDashboardPage() {
   const [
     totalOrders, 
     pendingOrders, 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     deliveredOrders, 
     totalProducts, 
     orders,

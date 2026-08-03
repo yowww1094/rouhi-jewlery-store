@@ -13,7 +13,6 @@ export default function BestCollectionsBanner() {
           {/* Left Column: Framed Pearl & Jewelry Image (Square / Sharp Corners) */}
           <div className="lg:col-span-6">
             <div className="relative aspect-[4/3] rounded-none overflow-hidden border border-zinc-700/80 group">
-              // eslint-disable-next-line @next/next/no-img-element
               <img
                 src="/images/best-collections-pink.webp"
                 alt="ROUHI Best Collections"
