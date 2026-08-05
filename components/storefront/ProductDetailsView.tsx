@@ -61,11 +61,11 @@ export default function ProductDetailsView({ product, similarProducts = [] }: { 
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 px-4 sm:px-6 lg:px-12">
         {/* Left Column: Image Gallery */}
-        <div className="lg:col-span-7 xl:col-span-8">
+        <div className="lg:col-span-6 xl:col-span-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {images.map((img, index) => {
               let colSpan = "sm:col-span-2"; // Full width by default
-              let aspect = "aspect-[4/5]";
+              let aspect = "aspect-square";
               
               if (images.length >= 3) {
                 // If there are at least 3 images, make the 2nd and 3rd half-width squares
@@ -89,7 +89,7 @@ export default function ProductDetailsView({ product, similarProducts = [] }: { 
         </div>
 
         {/* Right Column: Sticky Product Info */}
-        <div className="lg:col-span-5 xl:col-span-4 lg:sticky lg:top-40 self-start space-y-8">
+        <div className="lg:col-span-5 xl:col-span-5 lg:col-start-8 xl:col-start-8 lg:sticky lg:top-40 self-start space-y-8">
           {/* Header */}
           <div className="space-y-4">
             <h1 className="font-display text-3xl sm:text-4xl font-bold text-black tracking-tight leading-snug">

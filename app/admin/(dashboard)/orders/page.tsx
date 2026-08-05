@@ -2,7 +2,6 @@ import { Suspense } from 'react';
 import { connectToDatabase } from '@/lib/db';
 import { Order } from '@/models/Order';
 import { revalidatePath } from 'next/cache';
-import SyncOrdersButton from '@/components/admin/SyncOrdersButton';
 import OrdersTableClient from '@/components/admin/OrdersTableClient';
 
 export default async function AdminOrdersPage({
@@ -60,7 +59,6 @@ export default async function AdminOrdersPage({
           <h1 className="text-2xl font-bold text-gray-900">Orders</h1>
           <p className="text-sm text-gray-500 mt-1">Manage customer orders and update their status.</p>
         </div>
-        <SyncOrdersButton />
       </div>
 
       <Suspense fallback={<div>Loading orders...</div>}>

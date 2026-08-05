@@ -4,7 +4,8 @@ import { useState, useMemo, useEffect } from 'react';
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
-import { Heart, SlidersHorizontal, Search, ChevronDown, ChevronUp } from 'lucide-react';
+import { Heart, SlidersHorizontal, Search, ChevronDown, ChevronUp, ShoppingBag } from 'lucide-react';
+import { useCartStore } from '@/lib/store/cart';
 
 export interface CatalogProduct {
   _id: string;
@@ -44,6 +45,8 @@ export default function ProductsCatalog({
 }) {
   const locale = useLocale();
   const t = useTranslations('Catalog');
+  const h = useTranslations('Home');
+  const { addItem } = useCartStore();
   
   const router = useRouter();
   const pathname = usePathname();
@@ -396,6 +399,25 @@ export default function ProductsCatalog({
                         </span>
                       )}
                     </div>
+                    
+                    {/* Add to Cart Button */}
+                    <button
+                      onClick={() => {
+                        addItem({
+                          id: product._id,
+                          productId: product._id,
+                          name_fr: product.name_fr,
+                          name_ar: product.name_ar,
+                          price: product.discountPrice || product.price,
+                          image: product.images[0] || '/images/silver-bracelet.webp',
+                          quantity: 1
+                        });
+                      }}
+                      className="w-full mt-3 flex items-center justify-center gap-2 py-2.5 bg-black text-white hover:bg-[#C5A059] transition-colors text-xs font-bold uppercase tracking-widest"
+                    >
+                      <ShoppingBag className="w-3.5 h-3.5" />
+                      <span>{h('addToCart')}</span>
+                    </button>
                   </div>
                 </div>
               );

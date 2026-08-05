@@ -24,13 +24,11 @@ export default function FeaturedProductsSection({ products = [] }: { products?: 
   const locale = useLocale();
   const { addItem } = useCartStore();
 
-  if (products.length === 0) {
-    return null;
-  }
+
 
   return (
     <section className="py-16 bg-[#FAF8F5] text-black transition-colors overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20 sm:space-y-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
         
         {/* Section Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 border-b border-zinc-200 pb-8">
@@ -44,7 +42,7 @@ export default function FeaturedProductsSection({ products = [] }: { products?: 
           </div>
           <Link
             href="/products"
-            className="w-full sm:w-auto shrink-0 px-8 py-4 bg-[#C5A059] text-black font-bold text-xs uppercase tracking-[0.15em] hover:bg-[#b38d45] transition-colors shadow-sm flex items-center justify-center"
+            className="w-full sm:w-auto shrink-0 px-8 py-4 bg-[#C5A059] text-black font-bold text-xs uppercase tracking-[0.15em] hover:bg-[#B38D45] transition-colors shadow-sm flex items-center justify-center"
           >
             {t('allProducts')}
           </Link>
@@ -58,7 +56,7 @@ export default function FeaturedProductsSection({ products = [] }: { products?: 
           return (
             <div
               key={product._id}
-              className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center"
+              className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center"
             >
               {/* Image Column (Seamless Background Sync without Card Borders) */}
               <div className={`lg:col-span-6 flex justify-center ${!isEven ? 'lg:order-2' : 'lg:order-1'}`}>
@@ -102,12 +100,12 @@ export default function FeaturedProductsSection({ products = [] }: { products?: 
                         quantity: 1,
                       });
                     }}
-                    className="w-full sm:w-auto bg-[#1E1E1E] hover:bg-black text-white px-7 py-3.5 rounded-none font-medium text-xs tracking-wider uppercase inline-flex items-center justify-center gap-2 shadow-md transition-colors"
+                    className="w-full sm:w-auto bg-[#1E1E1E] hover:bg-black text-white px-7 py-3.5 rounded-none font-medium text-xs tracking-wider uppercase inline-flex items-center justify-center gap-2 shadow-md transition-colors order-2 sm:order-1"
                   >
                     <span>{t('addToCart')}</span>
                   </button>
 
-                  <div className="flex flex-row sm:flex-col items-center sm:items-start gap-3 sm:gap-1">
+                  <div className="flex flex-row sm:flex-col items-center sm:items-start gap-3 sm:gap-1 order-1 sm:order-2">
                     <span className="font-display text-2xl sm:text-3xl font-bold text-black">
                       {(product.discountPrice || product.price).toFixed(2)} MAD
                     </span>

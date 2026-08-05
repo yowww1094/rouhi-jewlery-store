@@ -50,9 +50,9 @@ export default function Header() {
             <Image 
               src="/images/logo.png" 
               alt={t('storeName')} 
-              width={200} 
-              height={90} 
-              className="h-11 sm:h-18 w-auto object-contain scale-[1.3] sm:scale-[1.4] origin-left"
+              width={180} 
+              height={70} 
+              className="h-12 sm:h-14 w-auto object-contain scale-[1.5] sm:scale-[1.7] origin-left"
               priority
             />
           </Link>

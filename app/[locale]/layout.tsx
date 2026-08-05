@@ -49,7 +49,7 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} dir={dir} className={`${plusJakarta.variable} ${tajawal.variable}`}>
-      <body className={`min-h-screen bg-[#FAF8F5] text-[#121214] antialiased ${locale === 'ar' ? 'font-tajawal' : 'font-plus-jakarta'}`}>
+      <body className={`min-h-screen bg-[#FAF8F5] text-[#121214] antialiased overflow-x-hidden ${locale === 'ar' ? 'font-tajawal' : 'font-plus-jakarta'}`}>
         <NextIntlClientProvider messages={messages}>
           {children}
         </NextIntlClientProvider>

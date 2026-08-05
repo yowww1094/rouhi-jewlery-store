@@ -218,7 +218,15 @@ export default function ProductForm({
           <h3 className="text-lg font-semibold text-gray-900 border-b pb-2">Media & Options</h3>
           
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Images (Cloudinary)</label>
+            <div className="mb-3">
+              <label className="block text-sm font-medium text-gray-700 mb-1">Images (Cloudinary)</label>
+              <p className="text-xs text-gray-500">
+                Recommended resolutions:<br/>
+                • <strong>Square (1:1):</strong> 1080x1080px (Best for catalogs and thumbnails)<br/>
+                • <strong>Portrait (4:5):</strong> 1080x1350px (Best for detailed product views)<br/>
+                Ensure images are high-quality with minimal empty background space.
+              </p>
+            </div>
             <div className="flex flex-wrap gap-2 mb-2">
               {images.map((img, i) => (
                 <div key={i} className="relative w-20 h-20 bg-gray-100 rounded-lg overflow-hidden border border-gray-200">
@@ -232,7 +240,13 @@ export default function ProductForm({
             <CldUploadWidget 
               uploadPreset={process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET || "rouhi_jewelry"} 
               onSuccess={(result: any) => {
-                setValue('images', [...images, result.info.secure_url]);
+                const originalUrl = result.info.secure_url;
+                // Apply 1080x1080 1:1 padding automatically (background removal removed as add-on is missing)
+                const transformedUrl = originalUrl.replace(
+                  '/upload/', 
+                  '/upload/w_1080,h_1080,c_pad,b_auto,f_webp/'
+                );
+                setValue('images', [...images, transformedUrl]);
               }}
             >
               {({ open }) => (

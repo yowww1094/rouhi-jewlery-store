@@ -65,11 +65,11 @@ export default async function HomePage() {
       <main className="flex-1">
         <HeroBanner />
         <MarqueeTicker />
-        <OurStorySection />
         <FeaturedProductsSection products={featuredProducts} />
         <BestCollectionsBanner />
         <GoldFeatureSection />
         <GiftGuideSection products={giftProducts} />
+        <OurStorySection />
         <NewsletterSection />
       </main>
       <Footer contactInfo={contactInfo} />

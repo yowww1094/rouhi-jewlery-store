@@ -12,9 +12,9 @@ export default function HeroBanner() {
       {/* Background Image in Full Cover Mode with Black Overlay */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/images/hero-banner.webp"
+          src="/images/hero.webp"
           alt="Rouhi Jewelry Cover Hero"
-          className="w-full h-full object-cover object-center scale-105 transition-transform duration-1000 ease-out brightness-90"
+          className="w-full h-full object-cover object-right md:object-[80%_center] lg:object-center scale-105 transition-transform duration-1000 ease-out brightness-90"
         />
         {/* Rich Black Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-transparent ltr:bg-gradient-to-r rtl:bg-gradient-to-l" />
@@ -32,7 +32,7 @@ export default function HeroBanner() {
 
           {/* Impact Headline */}
           <div className="space-y-4">
-            <h1 className="font-display text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tight text-white leading-[1.15] drop-shadow-md">
+            <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.15] drop-shadow-md">
               {t.rich('title', {
                 highlight: (chunks) => <span className="text-[#C5A059] italic font-serif font-normal">{chunks}</span>,
                 br: () => <br />

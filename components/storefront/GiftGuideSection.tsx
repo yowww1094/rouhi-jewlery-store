@@ -2,8 +2,9 @@
 
 import { useLocale, useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
-import { Heart } from 'lucide-react';
+import { Heart, ShoppingBag } from 'lucide-react';
 import { useState } from 'react';
+import { useCartStore } from '@/lib/store/cart';
 
 export interface GiftProductProps {
   _id: string;
@@ -19,7 +20,9 @@ export interface GiftProductProps {
 export default function GiftGuideSection({ products = [] }: { products?: GiftProductProps[] }) {
   const locale = useLocale();
   const t = useTranslations('Sections');
+  const h = useTranslations('Home');
   const [wishlist, setWishlist] = useState<Record<string, boolean>>({});
+  const { addItem } = useCartStore();
 
   const toggleWishlist = (id: string) => {
     setWishlist((prev) => ({ ...prev, [id]: !prev[id] }));
@@ -108,6 +111,25 @@ export default function GiftGuideSection({ products = [] }: { products?: GiftPro
                         </span>
                       )}
                     </div>
+                    
+                    {/* Add to Cart Button */}
+                    <button
+                      onClick={() => {
+                        addItem({
+                          id: product._id,
+                          productId: product._id,
+                          name_fr: product.name_fr,
+                          name_ar: product.name_ar,
+                          price: product.discountPrice || product.price,
+                          image: product.images[0] || '/images/silver-bracelet.webp',
+                          quantity: 1
+                        });
+                      }}
+                      className="w-full mt-3 flex items-center justify-center gap-2 py-2.5 bg-black text-white hover:bg-[#C5A059] transition-colors text-xs font-bold uppercase tracking-widest"
+                    >
+                      <ShoppingBag className="w-3.5 h-3.5" />
+                      <span>{h('addToCart')}</span> 
+                    </button>
                   </div>
                 </div>
               );
