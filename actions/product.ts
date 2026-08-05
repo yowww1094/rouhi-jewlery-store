@@ -54,9 +54,7 @@ export async function createProduct(data: z.infer<typeof ProductSchema>) {
     const product = new Product({ ...validatedData, slug });
     await product.save();
     
-    revalidatePath('/admin/products');
-    revalidatePath('/');
-    revalidatePath('/products');
+    revalidatePath('/', 'layout');
     
     return { success: true };
   } catch (error: any) {
@@ -83,10 +81,7 @@ export async function updateProduct(id: string, data: z.infer<typeof ProductSche
 
     await Product.findByIdAndUpdate(id, { ...validatedData, slug });
     
-    revalidatePath('/admin/products');
-    revalidatePath('/');
-    revalidatePath('/products');
-    revalidatePath(`/products/${validatedData.slug}`);
+    revalidatePath('/', 'layout');
     
     return { success: true };
   } catch (error: any) {
@@ -100,9 +95,7 @@ export async function deleteProduct(id: string) {
     await connectToDatabase();
     await Product.findByIdAndDelete(id);
     
-    revalidatePath('/admin/products');
-    revalidatePath('/');
-    revalidatePath('/products');
+    revalidatePath('/', 'layout');
     
     return { success: true };
   } catch (error: any) {

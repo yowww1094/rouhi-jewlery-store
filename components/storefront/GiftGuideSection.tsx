@@ -39,6 +39,7 @@ export default function GiftGuideSection({ products = [] }: { products?: GiftPro
           src="/images/gift-guide-hero.webp"
           alt="Gift Guide Rouhi"
           fill
+          sizes="100vw"
           className="object-cover opacity-75 rounded-none"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
@@ -74,6 +75,7 @@ export default function GiftGuideSection({ products = [] }: { products?: GiftPro
                         src={product.images[0] || '/images/silver-bracelet.webp'}
                         alt={name}
                         fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         className="object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-700"
                       />
                     </Link>

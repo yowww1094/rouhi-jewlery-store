@@ -17,6 +17,7 @@ export default function HeroBanner() {
           alt="Rouhi Jewelry Cover Hero"
           fill
           priority
+          sizes="100vw"
           className="object-cover object-right md:object-[80%_center] lg:object-center scale-105 transition-transform duration-1000 ease-out brightness-90"
         />
         {/* Rich Black Gradient Overlay */}

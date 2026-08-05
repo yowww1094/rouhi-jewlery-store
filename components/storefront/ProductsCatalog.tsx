@@ -361,6 +361,7 @@ export default function ProductsCatalog({
                         src={product.images[0]}
                         alt={name}
                         fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         className="object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-700"
                       />
                     </Link>

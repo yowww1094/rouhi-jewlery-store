@@ -87,6 +87,7 @@ export default function ProductDetailsView({ product, similarProducts = [] }: { 
                     alt={`${name} view ${index + 1}`} 
                     fill
                     priority={index === 0}
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                     className="object-cover mix-blend-multiply" 
                   />
                 </div>
@@ -233,6 +234,7 @@ export default function ProductDetailsView({ product, similarProducts = [] }: { 
                           src={p.images[0]}
                           alt={similarName}
                           fill
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                           className="object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-700 p-4"
                         />
                       )}

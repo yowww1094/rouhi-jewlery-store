@@ -67,6 +67,7 @@ export default function FeaturedProductsSection({ products = [] }: { products?: 
                       src={product.images[0] || '/images/silver-bracelet.webp'}
                       alt={name}
                       fill
+                      sizes="(max-width: 1024px) 100vw, 50vw"
                       className="object-contain mix-blend-multiply transition-transform duration-700 group-hover:scale-105"
                     />
                   </Link>
