@@ -6,6 +6,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import { Heart, SlidersHorizontal, Search, ChevronDown, ChevronUp, ShoppingBag } from 'lucide-react';
 import { useCartStore } from '@/lib/store/cart';
+import Image from 'next/image';
 
 export interface CatalogProduct {
   _id: string;
@@ -355,11 +356,12 @@ export default function ProductsCatalog({
                 >
                   {/* Card Image Container */}
                   <div className="relative aspect-square w-full bg-[#FAF8F5] mb-4 overflow-hidden flex items-center justify-center p-4">
-                    <Link href={`/products/${product.slug}`} className="w-full h-full">
-                      <img
+                    <Link href={`/products/${product.slug}`} className="w-full h-full block relative">
+                      <Image
                         src={product.images[0]}
                         alt={name}
-                        className="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-700"
+                        fill
+                        className="object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-700"
                       />
                     </Link>
 

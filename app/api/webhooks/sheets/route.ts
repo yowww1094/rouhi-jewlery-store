@@ -45,3 +45,22 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'Internal Server Error', details: error.message }, { status: 500 });
   }
 }
+
+// Handle GET requests (in case Google Sheets redirects or defaults to GET)
+export async function GET() {
+  return NextResponse.json({ 
+    message: 'Webhook endpoint is active. Please send a POST request with the correct payload.' 
+  }, { status: 405 });
+}
+
+// Handle CORS Preflight
+export async function OPTIONS() {
+  return new NextResponse(null, {
+    status: 200,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'POST, GET, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+    },
+  });
+}

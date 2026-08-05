@@ -5,6 +5,7 @@ import { Link } from '@/i18n/routing';
 import { Heart, ShoppingBag } from 'lucide-react';
 import { useState } from 'react';
 import { useCartStore } from '@/lib/store/cart';
+import Image from 'next/image';
 
 export interface GiftProductProps {
   _id: string;
@@ -34,10 +35,11 @@ export default function GiftGuideSection({ products = [] }: { products?: GiftPro
       {/* PART 1: Full-Screen Width Banner with Title & Subtitle in Bottom Left */}
       <div className="relative w-full min-h-[500px] lg:min-h-[560px] flex items-end p-8 sm:p-16 text-white bg-black mb-20">
         {/* Full Screen Cover Image */}
-        <img
+        <Image
           src="/images/gift-guide-hero.webp"
           alt="Gift Guide Rouhi"
-          className="absolute inset-0 w-full h-full object-cover opacity-75 rounded-none"
+          fill
+          className="object-cover opacity-75 rounded-none"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
 
@@ -67,11 +69,12 @@ export default function GiftGuideSection({ products = [] }: { products?: GiftPro
                 >
                   {/* Card Image Container */}
                   <div className="relative aspect-square w-full bg-[#FAF8F5] mb-4 overflow-hidden flex items-center justify-center p-4">
-                    <Link href={`/products/${product.slug}`} className="w-full h-full">
-                      <img
+                    <Link href={`/products/${product.slug}`} className="w-full h-full block relative">
+                      <Image
                         src={product.images[0] || '/images/silver-bracelet.webp'}
                         alt={name}
-                        className="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-700"
+                        fill
+                        className="object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-700"
                       />
                     </Link>
 

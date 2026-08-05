@@ -2,7 +2,8 @@
 
 import { useTranslations, useLocale } from 'next-intl';
 import { Link } from '@/i18n/routing';
-import { ShoppingBag } from 'lucide-react';
+import { ShoppingBag, ArrowRight } from 'lucide-react';
+import Image from 'next/image';
 import { useState } from 'react';
 import { useCartStore } from '@/lib/store/cart';
 
@@ -61,11 +62,12 @@ export default function FeaturedProductsSection({ products = [] }: { products?: 
               {/* Image Column (Seamless Background Sync without Card Borders) */}
               <div className={`lg:col-span-6 flex justify-center ${!isEven ? 'lg:order-2' : 'lg:order-1'}`}>
                 <div className="relative aspect-square max-w-[440px] w-full group">
-                  <Link href={`/products/${product.slug}`} className="w-full h-full block">
-                    <img
+                  <Link href={`/products/${product.slug}`} className="w-full h-full block relative">
+                    <Image
                       src={product.images[0] || '/images/silver-bracelet.webp'}
                       alt={name}
-                      className="w-full h-full object-contain mix-blend-multiply transition-transform duration-700 group-hover:scale-105"
+                      fill
+                      className="object-contain mix-blend-multiply transition-transform duration-700 group-hover:scale-105"
                     />
                   </Link>
                 </div>

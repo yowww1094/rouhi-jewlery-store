@@ -7,6 +7,7 @@ import { Link, useRouter } from '@/i18n/routing';
 import { Star, Heart, Plus, Minus, ChevronDown, ChevronUp, Gift, Zap } from 'lucide-react';
 import FeaturedProductsSection from './FeaturedProductsSection';
 import { useCartStore } from '@/lib/store/cart';
+import Image from 'next/image';
 
 export default function ProductDetailsView({ product, similarProducts = [] }: { product: CatalogProduct, similarProducts?: any[] }) {
   const locale = useLocale();
@@ -80,8 +81,14 @@ export default function ProductDetailsView({ product, similarProducts = [] }: { 
               }
 
               return (
-                <div key={index} className={`${colSpan} ${aspect} bg-[#F6F5F4] overflow-hidden`}>
-                  <img src={img} alt={`${name} view ${index + 1}`} className="w-full h-full object-cover mix-blend-multiply" />
+                <div key={index} className={`${colSpan} ${aspect} bg-[#F6F5F4] overflow-hidden relative`}>
+                  <Image 
+                    src={img} 
+                    alt={`${name} view ${index + 1}`} 
+                    fill
+                    priority={index === 0}
+                    className="object-cover mix-blend-multiply" 
+                  />
                 </div>
               );
             })}
@@ -222,10 +229,11 @@ export default function ProductDetailsView({ product, similarProducts = [] }: { 
                   <div key={p._id} className="group cursor-pointer">
                     <div className="aspect-[4/5] bg-[#F6F5F4] overflow-hidden mb-4 relative">
                       {p.images?.[0] && (
-                        <img
+                        <Image
                           src={p.images[0]}
                           alt={similarName}
-                          className="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-700 p-4"
+                          fill
+                          className="object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-700 p-4"
                         />
                       )}
                       <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">

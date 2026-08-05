@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import { ArrowRight, Sparkles } from 'lucide-react';
+import Image from 'next/image';
 
 export default function HeroBanner() {
   const t = useTranslations('Hero');
@@ -11,10 +12,12 @@ export default function HeroBanner() {
     <section className="relative w-full min-h-[82vh] lg:min-h-[88vh] flex items-center overflow-hidden bg-[#0D0D0E] text-white">
       {/* Background Image in Full Cover Mode with Black Overlay */}
       <div className="absolute inset-0 z-0">
-        <img
+        <Image
           src="/images/hero.webp"
           alt="Rouhi Jewelry Cover Hero"
-          className="w-full h-full object-cover object-right md:object-[80%_center] lg:object-center scale-105 transition-transform duration-1000 ease-out brightness-90"
+          fill
+          priority
+          className="object-cover object-right md:object-[80%_center] lg:object-center scale-105 transition-transform duration-1000 ease-out brightness-90"
         />
         {/* Rich Black Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-transparent ltr:bg-gradient-to-r rtl:bg-gradient-to-l" />
