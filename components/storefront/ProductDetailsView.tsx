@@ -165,13 +165,32 @@ export default function ProductDetailsView({ product, similarProducts = [] }: { 
 
           {/* Action Buttons */}
           <div className="pt-6 space-y-4">
-            {/* Add to Cart */}
-            <button
-              onClick={handleAddToCart}
-              className="w-full bg-black text-white hover:bg-zinc-800 transition-colors h-12 text-xs font-bold tracking-widest uppercase flex items-center justify-center shadow-lg shadow-black/10"
-            >
-              {t('addToCart')}
-            </button>
+            <div className="flex gap-4">
+              {/* Quantity Selector */}
+              <div className="flex items-center justify-between border border-zinc-300 h-12 w-28 shrink-0">
+                <button
+                  onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                  className="px-3 h-full flex items-center justify-center text-zinc-500 hover:text-black hover:bg-zinc-50 transition-colors"
+                >
+                  <Minus className="w-3.5 h-3.5" />
+                </button>
+                <span className="text-sm font-semibold">{quantity}</span>
+                <button
+                  onClick={() => setQuantity(quantity + 1)}
+                  className="px-3 h-full flex items-center justify-center text-zinc-500 hover:text-black hover:bg-zinc-50 transition-colors"
+                >
+                  <Plus className="w-3.5 h-3.5" />
+                </button>
+              </div>
+              
+              {/* Add to Cart */}
+              <button
+                onClick={handleAddToCart}
+                className="flex-1 bg-black text-white hover:bg-zinc-800 transition-colors h-12 text-xs font-bold tracking-widest uppercase flex items-center justify-center shadow-lg shadow-black/10"
+              >
+                {t('addToCart')}
+              </button>
+            </div>
             
             {/* Buy Immediately */}
             <button
