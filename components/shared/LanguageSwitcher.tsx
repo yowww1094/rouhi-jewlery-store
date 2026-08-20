@@ -5,7 +5,7 @@ import { useRouter, usePathname } from '@/i18n/routing';
 import { Globe, ChevronDown, Check } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
 
-export default function LanguageSwitcher() {
+export default function LanguageSwitcher({ isTransparent = false }: { isTransparent?: boolean }) {
   const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
@@ -34,7 +34,9 @@ export default function LanguageSwitcher() {
       <button
         onClick={() => setIsOpen(!isOpen)}
         aria-label="Select Language"
-        className="flex items-center gap-1.5 p-2 text-zinc-700 hover:text-[#C5A059] transition-colors rounded-full text-xs font-medium uppercase tracking-wider"
+        className={`flex items-center gap-1.5 p-2 transition-colors rounded-full text-xs font-medium uppercase tracking-wider ${
+          isTransparent ? 'text-white hover:text-zinc-200' : 'text-zinc-700 hover:text-[#C5A059]'
+        }`}
       >
         <Globe className="w-5 h-5" />
         <span className="font-semibold">{locale.toUpperCase()}</span>
