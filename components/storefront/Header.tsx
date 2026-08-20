@@ -77,15 +77,15 @@ export default function Header() {
       <header className={`${headerBaseClasses} ${headerClasses} ${isHomePage && !isScrolled ? 'pt-8 sm:pt-10' : ''}`}>
         <div className="w-full px-6 sm:px-12 lg:px-16 h-20 sm:h-24 flex items-center justify-between">
           
-          {/* 1. Brand Logo (Bigger) */}
-          <div className="flex-shrink-0 flex items-center">
+          {/* 1. Brand Logo */}
+          <div className="flex-shrink-0 flex items-center min-w-0">
             <Link href="/" className="inline-block relative">
               <Image 
                 src="/images/logo.png" 
                 alt={t('storeName')} 
                 width={180} 
                 height={70} 
-                className={`h-14 sm:h-16 w-auto object-contain scale-[1.8] sm:scale-[2.2] ml-4 sm:ml-8 origin-left transition-all duration-300 ${isTransparentState ? 'brightness-0 invert' : ''}`}
+                className={`h-12 sm:h-16 w-auto object-contain scale-[1.4] sm:scale-[2.2] ml-0 sm:ml-8 origin-left transition-all duration-300 ${isTransparentState ? 'brightness-0 invert' : ''}`}
                 priority
               />
             </Link>
