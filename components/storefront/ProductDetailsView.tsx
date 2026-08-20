@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { CatalogProduct } from '@/components/storefront/ProductsCatalog';
 import { Link, useRouter } from '@/i18n/routing';
-import { Star, Heart, Plus, Minus, ChevronDown, ChevronUp, Gift, Zap } from 'lucide-react';
+import { Star, Heart, Plus, Minus, ChevronDown, ChevronUp, Gift, Zap, X } from 'lucide-react';
 import FeaturedProductsSection from './FeaturedProductsSection';
 import { useCartStore } from '@/lib/store/cart';
 import Image from 'next/image';
@@ -18,8 +18,9 @@ export default function ProductDetailsView({ product, similarProducts = [] }: { 
 
   const [openAccordion, setOpenAccordion] = useState<string | null>('detail');
   const [quantity, setQuantity] = useState(1);
-
   const images = product.images || [];
+  const [selectedImage, setSelectedImage] = useState(images[0] || '');
+  const [isZoomModalOpen, setIsZoomModalOpen] = useState(false);
 
   const handleAccordion = (id: string) => {
     setOpenAccordion(openAccordion === id ? null : id);
@@ -61,38 +62,43 @@ export default function ProductDetailsView({ product, similarProducts = [] }: { 
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 px-4 sm:px-6 lg:px-12">
-        {/* Left Column: Image Gallery */}
         <div className="lg:col-span-6 xl:col-span-6">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {images.map((img, index) => {
-              let colSpan = "sm:col-span-2"; // Full width by default
-              let aspect = "aspect-square";
-              
-              if (images.length >= 3) {
-                // If there are at least 3 images, make the 2nd and 3rd half-width squares
-                if (index === 1 || index === 2) {
-                  colSpan = "sm:col-span-1";
-                  aspect = "aspect-square";
-                }
-              }
-              if (index === 3) {
-                // 4th image is wide
-                aspect = "aspect-[16/9]";
-              }
-
-              return (
-                <div key={index} className={`${colSpan} ${aspect} bg-[#F6F5F4] overflow-hidden relative`}>
-                  <Image 
-                    src={img} 
-                    alt={`${name} view ${index + 1}`} 
-                    fill
-                    priority={index === 0}
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="object-cover mix-blend-multiply" 
-                  />
-                </div>
-              );
-            })}
+          <div className="flex flex-col gap-4">
+            {/* Main Image */}
+            <div 
+              className="relative aspect-square w-full bg-[#F6F5F4] overflow-hidden cursor-zoom-in group"
+              onClick={() => setIsZoomModalOpen(true)}
+            >
+              <Image 
+                src={selectedImage} 
+                alt={`${name} main view`} 
+                fill
+                priority
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover mix-blend-multiply transition-transform duration-500 group-hover:scale-105" 
+              />
+            </div>
+            
+            {/* Thumbnails */}
+            {images.length > 1 && (
+              <div className="flex gap-4 overflow-x-auto pb-2 scrollbar-hide">
+                {images.map((img, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setSelectedImage(img)}
+                    className={`relative w-20 h-20 sm:w-24 sm:h-24 shrink-0 bg-[#F6F5F4] overflow-hidden border transition-colors ${selectedImage === img ? 'border-black' : 'border-transparent hover:border-zinc-300'}`}
+                  >
+                    <Image 
+                      src={img}
+                      alt={`${name} thumbnail ${idx + 1}`}
+                      fill
+                      sizes="96px"
+                      className="object-cover mix-blend-multiply"
+                    />
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
         </div>
 
