@@ -62,9 +62,8 @@ export default function ProductDetailsView({ product, similarProducts = [] }: { 
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
-        <div className="lg:col-span-6 xl:col-span-6 flex gap-4">
-          <div className="flex-1 flex flex-col gap-4">
-            {/* Main Image */}
+        <div className="lg:col-span-6 xl:col-span-6 flex flex-col gap-4">
+          {/* Main Image */}
             <div 
               className="relative aspect-square w-full bg-[#F6F5F4] overflow-hidden cursor-zoom-in group rounded-md"
               onClick={() => setIsZoomModalOpen(true)}
@@ -77,6 +76,33 @@ export default function ProductDetailsView({ product, similarProducts = [] }: { 
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover mix-blend-multiply transition-transform duration-500 group-hover:scale-105" 
               />
+              {/* Image Navigation Arrows */}
+              {images.length > 1 && (
+                <>
+                  <button 
+                    className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 hover:bg-white text-black shadow-md transition-all rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 z-10"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      const currentIndex = images.indexOf(selectedImage);
+                      const prevIndex = currentIndex === 0 ? images.length - 1 : currentIndex - 1;
+                      setSelectedImage(images[prevIndex]);
+                    }}
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                  </button>
+                  <button 
+                    className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 hover:bg-white text-black shadow-md transition-all rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 z-10"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      const currentIndex = images.indexOf(selectedImage);
+                      const nextIndex = currentIndex === images.length - 1 ? 0 : currentIndex + 1;
+                      setSelectedImage(images[nextIndex]);
+                    }}
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                  </button>
+                </>
+              )}
             </div>
             
             {/* Thumbnails */}
@@ -99,38 +125,6 @@ export default function ProductDetailsView({ product, similarProducts = [] }: { 
                 ))}
               </div>
             )}
-          </div>
-
-          {/* Right Side Icons column for Image Gallery */}
-          <div className="w-12 flex flex-col gap-4 shrink-0 items-center pt-4">
-            <button className="w-10 h-10 bg-zinc-100 hover:bg-zinc-200 transition-colors rounded-md flex items-center justify-center">
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
-            </button>
-            <button className="w-10 h-10 bg-zinc-100 hover:bg-zinc-200 transition-colors rounded-md flex items-center justify-center mb-8">
-              <Heart className="w-[18px] h-[18px]" />
-            </button>
-            
-            <button 
-              className="w-10 h-10 bg-zinc-100 hover:bg-zinc-200 transition-colors rounded-md flex items-center justify-center"
-              onClick={() => {
-                const currentIndex = images.indexOf(selectedImage);
-                const prevIndex = currentIndex === 0 ? images.length - 1 : currentIndex - 1;
-                setSelectedImage(images[prevIndex]);
-              }}
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-            </button>
-            <button 
-              className="w-10 h-10 bg-zinc-100 hover:bg-zinc-200 transition-colors rounded-md flex items-center justify-center"
-              onClick={() => {
-                const currentIndex = images.indexOf(selectedImage);
-                const nextIndex = currentIndex === images.length - 1 ? 0 : currentIndex + 1;
-                setSelectedImage(images[nextIndex]);
-              }}
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-            </button>
-          </div>
         </div>
 
         {/* Right Column: Sticky Product Info */}
