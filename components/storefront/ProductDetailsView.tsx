@@ -299,6 +299,31 @@ export default function ProductDetailsView({ product, similarProducts = [] }: { 
         </div>
       )}
 
+      {/* Zoom Modal */}
+      {isZoomModalOpen && (
+        <div 
+          className="fixed inset-0 z-[100] bg-white flex items-center justify-center cursor-zoom-out"
+          onClick={() => setIsZoomModalOpen(false)}
+        >
+          <button 
+            className="absolute top-6 right-6 p-3 bg-zinc-100 text-black hover:bg-zinc-200 transition-colors rounded-full z-50"
+            onClick={(e) => { e.stopPropagation(); setIsZoomModalOpen(false); }}
+          >
+            <X className="w-6 h-6" />
+          </button>
+          <div className="relative w-[95vw] h-[95vh] max-w-7xl mx-auto">
+            <Image 
+              src={selectedImage}
+              alt="Zoomed view"
+              fill
+              sizes="100vw"
+              className="object-contain"
+              quality={100}
+            />
+          </div>
+        </div>
+      )}
+
     </main>
   );
 }
