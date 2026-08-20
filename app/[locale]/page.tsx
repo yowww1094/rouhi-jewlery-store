@@ -26,7 +26,7 @@ async function getFeaturedProducts() {
       return JSON.parse(JSON.stringify(products));
     })();
 
-    const timeoutPromise = new Promise<unknown[]>((resolve) => setTimeout(() => resolve([]), 500));
+    const timeoutPromise = new Promise<unknown[]>((resolve) => setTimeout(() => resolve([]), 5000));
 
     return await Promise.race([fetchPromise, timeoutPromise]);
   } catch (error) {
@@ -45,7 +45,7 @@ async function getGiftProducts() {
       return JSON.parse(JSON.stringify(products));
     })();
 
-    const timeoutPromise = new Promise<unknown[]>((resolve) => setTimeout(() => resolve([]), 500));
+    const timeoutPromise = new Promise<unknown[]>((resolve) => setTimeout(() => resolve([]), 5000));
     return await Promise.race([fetchPromise, timeoutPromise]);
   } catch (error) {
     return [];
