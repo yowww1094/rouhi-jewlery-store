@@ -85,7 +85,7 @@ export default function Header() {
                 alt={t('storeName')} 
                 width={180} 
                 height={70} 
-                className={`h-10 sm:h-16 w-auto object-contain scale-125 sm:scale-[2.2] -ml-2 sm:ml-8 origin-left transition-all duration-300 ${isTransparentState ? 'brightness-0 invert' : ''}`}
+                className={`h-[55px] sm:h-16 w-auto object-contain sm:scale-[2.2] -ml-3 sm:ml-8 origin-left transition-all duration-300 ${isTransparentState ? 'brightness-0 invert' : ''}`}
                 priority
               />
             </Link>
