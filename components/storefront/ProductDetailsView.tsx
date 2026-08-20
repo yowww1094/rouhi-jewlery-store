@@ -61,12 +61,11 @@ export default function ProductDetailsView({ product, similarProducts = [] }: { 
         </nav>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 px-4 sm:px-6 lg:px-12">
-        <div className="lg:col-span-6 xl:col-span-6">
-          <div className="flex flex-col gap-4">
+        <div className="lg:col-span-6 xl:col-span-6 flex gap-4">
+          <div className="flex-1 flex flex-col gap-4">
             {/* Main Image */}
             <div 
-              className="relative aspect-square w-full bg-[#F6F5F4] overflow-hidden cursor-zoom-in group"
+              className="relative aspect-square w-full bg-[#F6F5F4] overflow-hidden cursor-zoom-in group rounded-md"
               onClick={() => setIsZoomModalOpen(true)}
             >
               <Image 
@@ -86,7 +85,7 @@ export default function ProductDetailsView({ product, similarProducts = [] }: { 
                   <button
                     key={idx}
                     onClick={() => setSelectedImage(img)}
-                    className={`relative w-20 h-20 sm:w-24 sm:h-24 shrink-0 bg-[#F6F5F4] overflow-hidden border transition-colors ${selectedImage === img ? 'border-black' : 'border-transparent hover:border-zinc-300'}`}
+                    className={`relative w-20 h-20 sm:w-24 sm:h-24 shrink-0 bg-[#F6F5F4] overflow-hidden rounded-md transition-colors ${selectedImage === img ? 'ring-2 ring-black' : 'ring-1 ring-transparent hover:ring-zinc-300'}`}
                   >
                     <Image 
                       src={img}
@@ -100,71 +99,93 @@ export default function ProductDetailsView({ product, similarProducts = [] }: { 
               </div>
             )}
           </div>
+
+          {/* Right Side Icons column for Image Gallery */}
+          <div className="w-12 flex flex-col gap-4 shrink-0 items-center pt-4">
+            <button className="w-10 h-10 bg-zinc-100 hover:bg-zinc-200 transition-colors rounded-md flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+            </button>
+            <button className="w-10 h-10 bg-zinc-100 hover:bg-zinc-200 transition-colors rounded-md flex items-center justify-center mb-8">
+              <Heart className="w-[18px] h-[18px]" />
+            </button>
+            
+            <button 
+              className="w-10 h-10 bg-zinc-100 hover:bg-zinc-200 transition-colors rounded-md flex items-center justify-center"
+              onClick={() => {
+                const currentIndex = images.indexOf(selectedImage);
+                const prevIndex = currentIndex === 0 ? images.length - 1 : currentIndex - 1;
+                setSelectedImage(images[prevIndex]);
+              }}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            <button 
+              className="w-10 h-10 bg-zinc-100 hover:bg-zinc-200 transition-colors rounded-md flex items-center justify-center"
+              onClick={() => {
+                const currentIndex = images.indexOf(selectedImage);
+                const nextIndex = currentIndex === images.length - 1 ? 0 : currentIndex + 1;
+                setSelectedImage(images[nextIndex]);
+              }}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
+          </div>
         </div>
 
         {/* Right Column: Sticky Product Info */}
         <div className="lg:col-span-5 xl:col-span-5 lg:col-start-8 xl:col-start-8 lg:sticky lg:top-40 self-start space-y-8">
           {/* Header */}
-          <div className="space-y-4">
+          <div className="space-y-3">
+            <p className="text-zinc-500 text-sm font-sans tracking-wide">Maison Rouhi</p>
             <h1 className="font-display text-3xl sm:text-4xl font-bold text-black tracking-tight leading-snug">
               {name}
             </h1>
-            <div className="flex items-center gap-4">
-              <div className="flex items-center gap-4">
-                <span className="font-display text-2xl font-bold text-black">
-                  {(product.discountPrice || product.price).toFixed(2)} MAD
+            <div className="flex items-center gap-4 mt-2">
+              <span className="font-display text-2xl font-bold text-black">
+                {(product.discountPrice || product.price).toFixed(2)} MAD
+              </span>
+              {product.discountPrice && (
+                <span className="text-sm text-zinc-400 line-through">
+                  {product.price.toFixed(2)} MAD
                 </span>
-                {product.discountPrice && (
-                  <span className="text-sm text-zinc-400 line-through">
-                    {product.price.toFixed(2)} MAD
-                  </span>
-                )}
-              </div>
-
+              )}
             </div>
           </div>
 
-          <div className="h-px bg-zinc-200"></div>
+          <div className="border-t border-dashed border-zinc-200 my-6"></div>
 
+          {/* Description - Directly Visible */}
+          <div className="space-y-3">
+            <h3 className="font-bold text-sm text-black uppercase tracking-wider">{t('detailTab')}:</h3>
+            <p className="text-sm text-zinc-600 leading-relaxed font-serif whitespace-pre-wrap">
+              {description}
+            </p>
+          </div>
 
-
-          {/* Quantity and Actions */}
-          <div className="space-y-4 pt-2">
-            <div className="flex gap-4">
-              {/* Quantity Selector */}
-              <div className="flex items-center border border-zinc-300 h-12">
-                <button
-                  onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                  className="px-4 h-full text-zinc-500 hover:text-black hover:bg-zinc-50 transition-colors"
-                >
-                  <Minus className="w-3.5 h-3.5" />
-                </button>
-                <span className="w-8 text-center text-sm font-semibold">{quantity}</span>
-                <button
-                  onClick={() => setQuantity(quantity + 1)}
-                  className="px-4 h-full text-zinc-500 hover:text-black hover:bg-zinc-50 transition-colors"
-                >
-                  <Plus className="w-3.5 h-3.5" />
-                </button>
-              </div>
-              
-              {/* Add to Cart */}
-              <button
-                onClick={handleAddToCart}
-                className="flex-1 bg-black text-white hover:bg-zinc-800 transition-colors h-12 text-xs font-bold tracking-widest uppercase flex items-center justify-center shadow-lg shadow-black/10"
-              >
-                {t('addToCart')}
-              </button>
-            </div>
+          {/* Action Buttons */}
+          <div className="pt-6 flex gap-4">
+            {/* Add to Cart */}
+            <button
+              onClick={handleAddToCart}
+              className="flex-1 bg-[#121214] text-white hover:bg-zinc-800 transition-colors h-14 text-sm font-bold tracking-widest uppercase flex items-center justify-center rounded-md"
+            >
+              {t('addToCart')}
+            </button>
             
             {/* Buy Immediately */}
             <button
               onClick={handleBuyImmediately}
-              className="w-full bg-[#C5A059] text-black hover:bg-[#B38D45] transition-colors h-12 text-xs font-bold tracking-widest uppercase flex items-center justify-center shadow-lg shadow-black/5 gap-2"
+              className="flex-1 bg-white text-black border border-zinc-300 hover:border-black transition-colors h-14 text-sm font-bold tracking-widest uppercase flex items-center justify-center rounded-md"
             >
-              <Zap className="w-4 h-4 fill-black" />
               {t('buyNow')}
             </button>
+          </div>
+
+          {/* Delivery T&C Link */}
+          <div className="pt-4">
+            <a href="#" className="text-xs text-zinc-500 underline hover:text-black transition-colors">
+              Delivery T&C
+            </a>
           </div>
 
           {/* Smart Gift Card */}
@@ -184,10 +205,9 @@ export default function ProductDetailsView({ product, similarProducts = [] }: { 
             </div>
           </div>
 
-          {/* Accordion Info Sections */}
+          {/* Accordion Info Sections (Reduced) */}
           <div className="border-t border-zinc-200 mt-8">
             {[
-              { id: 'detail', label: t('detailTab'), content: description },
               { id: 'shipping', label: t('shippingTab'), content: t('shippingDesc') },
               { id: 'compatibility', label: t('compatibilityTab'), content: t('compatibilityDesc') },
             ].map((section) => (
