@@ -164,9 +164,10 @@ export default function Header() {
           </div>
         )}
 
-        {/* Cart Drawer Overlay */}
-        <CartDrawer isOpen={cartDrawerOpen} onClose={() => setCartDrawerOpen(false)} />
       </header>
+
+      {/* Cart Drawer Overlay - Rendered outside of header to avoid stacking context issues */}
+      <CartDrawer isOpen={cartDrawerOpen} onClose={() => setCartDrawerOpen(false)} />
     </>
   );
 }
