@@ -75,7 +75,7 @@ export default function Header() {
       </div>
       
       <header className={`${headerBaseClasses} ${headerClasses} ${isHomePage && !isScrolled ? 'pt-8 sm:pt-10' : ''}`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 sm:h-24 flex items-center justify-between">
+        <div className="w-full px-6 sm:px-12 lg:px-16 h-20 sm:h-24 flex items-center justify-between">
           
           {/* 1. Brand Logo (Bigger) */}
           <div className="flex-shrink-0 flex items-center">
@@ -92,7 +92,7 @@ export default function Header() {
           </div>
 
           {/* 2. Middle Navigation Links */}
-          <nav className="hidden lg:flex items-center justify-center flex-1 mx-8 gap-8 font-medium tracking-wide text-sm">
+          <nav className="hidden lg:flex items-center justify-center flex-1 mx-12 gap-12 font-medium tracking-wide text-sm">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               const linkColor = isTransparentState 
