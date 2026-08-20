@@ -27,7 +27,7 @@ export default function HeroBanner() {
 
       {/* Hero Overlay Content & CTA */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 w-full">
-        <div className="max-w-xl space-y-6">
+        <div className="max-w-3xl lg:max-w-4xl space-y-6">
           {/* Eyebrow badge */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#121214]/80 backdrop-blur-md text-[#C5A059] border border-[#C5A059]/40 text-xs font-semibold tracking-widest uppercase shadow-md">
             <Sparkles className="w-3.5 h-3.5" />
@@ -36,7 +36,7 @@ export default function HeroBanner() {
 
           {/* Impact Headline */}
           <div className="space-y-4">
-            <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.15] drop-shadow-md">
+            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.2] drop-shadow-md">
               {t.rich('title', {
                 highlight: (chunks) => <span className="text-[#C5A059] italic font-serif font-normal">{chunks}</span>,
                 br: () => <br />
@@ -45,7 +45,7 @@ export default function HeroBanner() {
           </div>
 
           {/* Subtitle */}
-          <p className="text-zinc-300 text-base sm:text-lg max-w-lg leading-relaxed font-light drop-shadow-sm">
+          <p className="text-zinc-300 text-base sm:text-lg max-w-2xl leading-relaxed font-light drop-shadow-sm">
             {t('subtitle')}
           </p>
 
