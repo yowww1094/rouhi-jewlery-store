@@ -49,9 +49,9 @@ export default function ProductDetailsView({ product, similarProducts = [] }: { 
   };
 
   return (
-    <main className="max-w-[1440px] mx-auto pt-6 pb-24">
+    <main className="max-w-[1280px] mx-auto pt-6 pb-24 px-4 sm:px-8 lg:px-16">
       {/* Breadcrumbs */}
-      <div className="px-4 sm:px-6 lg:px-12 py-4 mb-4">
+      <div className="py-4 mb-4">
         <nav className="text-xs text-zinc-500 font-sans tracking-wide">
           <Link href="/" className="hover:text-black">HOME</Link>
           <span className="mx-2">/</span>
@@ -61,6 +61,7 @@ export default function ProductDetailsView({ product, similarProducts = [] }: { 
         </nav>
       </div>
 
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
         <div className="lg:col-span-6 xl:col-span-6 flex gap-4">
           <div className="flex-1 flex flex-col gap-4">
             {/* Main Image */}
@@ -133,7 +134,7 @@ export default function ProductDetailsView({ product, similarProducts = [] }: { 
         </div>
 
         {/* Right Column: Sticky Product Info */}
-        <div className="lg:col-span-5 xl:col-span-5 lg:col-start-8 xl:col-start-8 lg:sticky lg:top-40 self-start space-y-8">
+        <div className="lg:col-span-5 xl:col-span-5 lg:col-start-7 xl:col-start-7 lg:sticky lg:top-40 self-start space-y-8">
           {/* Header */}
           <div className="space-y-3">
             <p className="text-zinc-500 text-sm font-sans tracking-wide">Maison Rouhi</p>
@@ -163,11 +164,11 @@ export default function ProductDetailsView({ product, similarProducts = [] }: { 
           </div>
 
           {/* Action Buttons */}
-          <div className="pt-6 flex gap-4">
+          <div className="pt-6 space-y-4">
             {/* Add to Cart */}
             <button
               onClick={handleAddToCart}
-              className="flex-1 bg-[#121214] text-white hover:bg-zinc-800 transition-colors h-14 text-sm font-bold tracking-widest uppercase flex items-center justify-center rounded-md"
+              className="w-full bg-black text-white hover:bg-zinc-800 transition-colors h-12 text-xs font-bold tracking-widest uppercase flex items-center justify-center shadow-lg shadow-black/10"
             >
               {t('addToCart')}
             </button>
@@ -175,8 +176,9 @@ export default function ProductDetailsView({ product, similarProducts = [] }: { 
             {/* Buy Immediately */}
             <button
               onClick={handleBuyImmediately}
-              className="flex-1 bg-white text-black border border-zinc-300 hover:border-black transition-colors h-14 text-sm font-bold tracking-widest uppercase flex items-center justify-center rounded-md"
+              className="w-full bg-[#C5A059] text-black hover:bg-[#B38D45] transition-colors h-12 text-xs font-bold tracking-widest uppercase flex items-center justify-center shadow-lg shadow-black/5 gap-2"
             >
+              <Zap className="w-4 h-4 fill-black" />
               {t('buyNow')}
             </button>
           </div>
