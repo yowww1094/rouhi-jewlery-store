@@ -202,13 +202,6 @@ export default function ProductDetailsView({ product, similarProducts = [] }: { 
             </button>
           </div>
 
-          {/* Delivery T&C Link */}
-          <div className="pt-4">
-            <a href="#" className="text-xs text-zinc-500 underline hover:text-black transition-colors">
-              Delivery T&C
-            </a>
-          </div>
-
           {/* Smart Gift Card */}
           <div className="bg-[#FAF8F5] p-6 flex items-start gap-4 border border-zinc-200/50 mt-4">
             <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shrink-0 shadow-sm border border-zinc-200">
