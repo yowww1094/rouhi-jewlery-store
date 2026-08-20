@@ -41,7 +41,7 @@ export default function ProductForm({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
 
-  const { register, handleSubmit, control, watch, setValue, formState: { errors } } = useForm<ProductFormData>({
+  const { register, handleSubmit, control, watch, setValue, getValues, formState: { errors } } = useForm<ProductFormData>({
     resolver: zodResolver(ProductSchema) as any,
     defaultValues: initialData || {
       name_fr: '',
@@ -229,9 +229,32 @@ export default function ProductForm({
             </div>
             <div className="flex flex-wrap gap-2 mb-2">
               {images.map((img, i) => (
-                <div key={i} className="relative w-20 h-20 bg-gray-100 rounded-lg overflow-hidden border border-gray-200">
+                <div key={i} className="relative w-24 h-24 bg-gray-100 rounded-lg overflow-hidden border border-gray-200 group">
                   <img src={img} alt="Product" className="w-full h-full object-cover" />
-                  <button type="button" onClick={() => setValue('images', images.filter((_, index) => index !== i))} className="absolute top-1 right-1 bg-white/80 p-1 rounded-full text-red-600 hover:bg-white">
+                  
+                  {i === 0 && (
+                    <span className="absolute bottom-0 left-0 right-0 bg-black/70 text-white text-[10px] font-bold text-center py-0.5 uppercase tracking-widest">
+                      Main
+                    </span>
+                  )}
+                  
+                  {i !== 0 && (
+                    <button 
+                      type="button" 
+                      onClick={() => {
+                        const newImages = [...images];
+                        const temp = newImages[0];
+                        newImages[0] = newImages[i];
+                        newImages[i] = temp;
+                        setValue('images', newImages);
+                      }} 
+                      className="absolute bottom-1 left-1 bg-white/90 px-1.5 py-0.5 rounded text-[9px] font-bold text-black opacity-0 group-hover:opacity-100 transition-opacity"
+                    >
+                      Make Main
+                    </button>
+                  )}
+
+                  <button type="button" onClick={() => setValue('images', images.filter((_, index) => index !== i))} className="absolute top-1 right-1 bg-white/80 p-1 rounded-full text-red-600 hover:bg-white opacity-0 group-hover:opacity-100 transition-opacity">
                     <X className="w-3 h-3" />
                   </button>
                 </div>
@@ -239,14 +262,16 @@ export default function ProductForm({
             </div>
             <CldUploadWidget 
               uploadPreset={process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET || "rouhi_jewelry"} 
+              options={{ multiple: true }}
               onSuccess={(result: any) => {
                 const originalUrl = result.info.secure_url;
-                // Apply 1080x1080 1:1 padding automatically (background removal removed as add-on is missing)
                 const transformedUrl = originalUrl.replace(
                   '/upload/', 
                   '/upload/w_1080,h_1080,c_pad,b_auto,f_webp/'
                 );
-                setValue('images', [...images, transformedUrl]);
+                // Use getValues to avoid stale closure state when multiple images are uploaded at once
+                const currentImages = getValues('images') || [];
+                setValue('images', [...currentImages, transformedUrl]);
               }}
             >
               {({ open }) => (
