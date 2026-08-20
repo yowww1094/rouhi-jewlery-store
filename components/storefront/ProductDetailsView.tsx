@@ -302,7 +302,7 @@ export default function ProductDetailsView({ product, similarProducts = [] }: { 
       {/* Zoom Modal */}
       {isZoomModalOpen && (
         <div 
-          className="fixed inset-0 z-[100] bg-white flex items-center justify-center cursor-zoom-out"
+          className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm flex items-center justify-center cursor-zoom-out"
           onClick={() => setIsZoomModalOpen(false)}
         >
           <button 
